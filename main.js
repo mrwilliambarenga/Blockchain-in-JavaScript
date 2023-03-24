@@ -18,3 +18,9 @@ class Block {
     ).toString();
   }
 }
+
+class Blockchain {
+  constructor() {
+    this.chain = [];
+  }
+}
