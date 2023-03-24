@@ -61,3 +61,10 @@ barengaCoin.addBlock(new Block(1, "12/02/2023", { amount: 4 }));
 barengaCoin.addBlock(new Block(2, "24/03/2023", { amount: 10 }));
 
 console.log(JSON.stringify(barengaCoin, null, 4));
+
+console.log("\nIs blockchain valid? " + barengaCoin.isChainValid());
+
+barengaCoin.chain[1].data = { amount: 100 };
+barengaCoin.chain[1].hash = barengaCoin.chain[1].calculateHash();
+
+console.log("\nIs blockchain valid? " + barengaCoin.isChainValid());
