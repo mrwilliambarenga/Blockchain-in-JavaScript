@@ -6,7 +6,7 @@ class Block {
     this.timestamp = timestamp;
     this.data = data;
     this.previousHash = previousHash;
-    this.hash = "";
+    this.hash = this.calculateHash();
   }
 
   calculateHash() {
@@ -27,4 +27,20 @@ class Blockchain {
   createGenesisBlock() {
     return new Block(0, "01/01/2023", "Genesis Block", "0");
   }
+
+  getLatestBlock() {
+    return this.chain[this.chain.length - 1];
+  }
+
+  addBlock(newBlock) {
+    newBlock.previousHash = this.getLatestBlock().hash;
+    newBlock.hash = newBlock.calculateHash();
+    this.chain.push(newBlock);
+  }
 }
+
+let barengaCoin = new Blockchain();
+barengaCoin.addBlock(new Block(1, "12/02/2023", { amount: 4 }));
+barengaCoin.addBlock(new Block(2, "24/03/2023", { amount: 10 }));
+
+console.log(JSON.stringify(barengaCoin, null, 4));
