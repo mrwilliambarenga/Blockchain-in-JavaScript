@@ -55,11 +55,7 @@ class Blockchain {
     return this.chain[this.chain.length - 1];
   }
 
-  addBlock(newBlock) {
-    newBlock.previousHash = this.getLatestBlock().hash;
-    newBlock.mineBlock(this.difficulty);
-    this.chain.push(newBlock);
-  }
+  minePendingTransactions(miningRewardAddress) {}
 
   isChainValid() {
     for (let i = 1; i < this.chain.length; i++) {
