@@ -71,9 +71,3 @@ class Blockchain {
 }
 
 let barengaCoin = new Blockchain();
-
-console.log("Mining block 1 ...");
-barengaCoin.addBlock(new Block(1, "12/02/2023", { amount: 4 }));
-
-console.log("Mining block 2 ...");
-barengaCoin.addBlock(new Block(2, "24/03/2023", { amount: 8 }));
