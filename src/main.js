@@ -55,7 +55,22 @@ class Blockchain {
     return this.chain[this.chain.length - 1];
   }
 
-  minePendingTransactions(miningRewardAddress) {}
+  minePendingTransactions(miningRewardAddress) {
+    let block = new Block(Date.now(), this.pendingTransactions);
+    /** In a real blockchain, miners choose which pending transactions they
+     * would like to include on the block.
+     */
+
+    block.mineBlock(this.difficulty);
+
+    console.log('Block successfully mined!');
+
+    this.chain.push(block);
+
+    this.pendingTransactions = [
+      new Transaction(null, miningRewardAddress, this.miningReward)
+    ]
+  }
 
   isChainValid() {
     for (let i = 1; i < this.chain.length; i++) {
